@@ -28,14 +28,13 @@ export const signin = async (req, res, next) => {
       return next(errorHandler(401, "Invalid credentials"));
     }
     const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET);
-    const { password: hashedPassword, ...others } = validUser._doc;
     res
       .cookie("token", token, {
         httpOnly: true,
         expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
       })
       .status(200)
-      .json(others);
+      .json(validUser);
   } catch (error) {
     next(error);
   }
