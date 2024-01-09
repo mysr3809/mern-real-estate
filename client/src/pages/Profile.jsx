@@ -1,6 +1,44 @@
 // eslint-disable-next-line no-unused-vars
 import React from "react";
+import { useSelector } from "react-redux";
 
 export default function Profile() {
-  return <div>Profile</div>;
+  const { currentUser } = useSelector((state) => state.user);
+  return (
+    <div className="p-3 max-w-lg mx-auto">
+      <h1 className="text-3xl font-semibold text-center my-7"> Profile</h1>
+      <form className="flex flex-col gap-4">
+        <img
+          src={currentUser.avatar}
+          alt="avatar"
+          className="rounded-full h-24 w-24 object-cover cursor-pointer self-center mt-2"
+        />
+        <input
+          className="border p-3 rounded-lg mt-2"
+          type="text"
+          placeholder="username"
+          id="username"
+        />
+        <input
+          className="border p-3 rounded-lg mt-2"
+          type="text"
+          placeholder="email"
+          id="email"
+        />
+        <input
+          className="border p-3 rounded-lg mt-2"
+          type="text"
+          placeholder="password"
+          id="password"
+        />
+        <button className="bg-slate-700 text-white p-3 rounded-lg mt-2 uppercase hover:opacity-80">
+          Update
+        </button>
+      </form>
+      <div className="flex justify-between mt-5">
+        <span className="text-red-500 cursor-pointer">Delete Account</span>
+        <span className="text-red-500 cursor-pointer">Sign Out</span>
+      </div>
+    </div>
+  );
 }
