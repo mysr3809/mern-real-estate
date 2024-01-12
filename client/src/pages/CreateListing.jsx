@@ -27,7 +27,6 @@ export default function CreateListing() {
     parking: false,
     furnished: false,
   });
-  console.log(formData);
   const [imageUploadError, setImageUploadError] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState(null);
@@ -71,7 +70,6 @@ export default function CreateListing() {
         (snapshot) => {
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log("progress", progress);
         },
         (error) => {
           reject(error);
