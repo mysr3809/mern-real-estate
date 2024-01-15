@@ -8,12 +8,12 @@ import {
   FaBath,
   FaBed,
   FaChair,
-  FaMapMarkedAlt,
   FaMapMarkerAlt,
   FaParking,
   FaShare,
 } from "react-icons/fa";
 import { useSelector } from "react-redux";
+import Contact from "../components/Contact";
 
 export default function Listing() {
   const [listing, setListing] = useState(null);
@@ -140,6 +140,7 @@ export default function Listing() {
                 Contact landlord
               </button>
             )}
+            {contact && <Contact userRef={listing.userRef} listing={listing} />}
           </div>
         </div>
       )}
