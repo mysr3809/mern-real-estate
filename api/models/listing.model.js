@@ -1,5 +1,16 @@
 import mongoose from "mongoose";
 
+const locationSchema = new mongoose.Schema({
+  latitude: {
+    type: Number,
+    required: true,
+  },
+  longitude: {
+    type: Number,
+    required: true,
+  },
+});
+
 const listingSchema = new mongoose.Schema(
   {
     name: {
@@ -53,6 +64,9 @@ const listingSchema = new mongoose.Schema(
     userRef: {
       type: String,
       required: true,
+    },
+    location: {
+      type: locationSchema,
     },
   },
   {

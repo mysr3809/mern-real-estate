@@ -55,6 +55,7 @@ export default function Search() {
       const searchQuery = urlParams.toString();
       const res = await fetch(`/api/listing/get?${searchQuery}`);
       const data = await res.json();
+      console.log({ data });
       if (data.length > 8) {
         setShowMore(true);
       } else {
@@ -127,9 +128,10 @@ export default function Search() {
       setShowMore(false);
     }
     setListings([...listings, ...data]);
+    console.log({ listings });
   };
   return (
-    <div className="flex flex-col md:flex-row">
+    <div className="flex justify-between flex-col md:flex-row">
       <div className="p-7  border-b-2 md:border-r-2 md:min-h-screen">
         <form onSubmit={handleSubmit} className="flex flex-col gap-8">
           <div className="flex items-center gap-2">
