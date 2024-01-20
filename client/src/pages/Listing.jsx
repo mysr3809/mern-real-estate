@@ -28,9 +28,12 @@ export default function Listing() {
     const fetchListing = async () => {
       try {
         setLoading(true);
-        const listingId = params.id;
+        const listingId = params.listingId;
+        console.log({ params });
+        console.log("listing id ", listingId);
         const response = await fetch(`/api/listing/get/${listingId}`);
         const data = await response.json();
+        console.log({ data });
         if (data.success === false) {
           setError(true);
           setLoading(false);
