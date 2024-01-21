@@ -38,7 +38,6 @@ export const updateListing = async (req, res, next) => {
     return next(errorHandler(400, "Invalid ID format"));
   }
   const listing = await Listing.findById(req.params.id);
-  console.log("id", listing);
 
   if (!listing) {
     return next(errorHandler(404, "Listing not found!"));
@@ -64,7 +63,6 @@ export const getListing = async (req, res, next) => {
     return next(errorHandler(400, "Invalid ID format"));
   }
   const listing = await Listing.findById(req.params.id);
-  console.log("id", listing);
 
   if (!listing) {
     return next(errorHandler(404, "Listing not found!"));

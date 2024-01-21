@@ -8,7 +8,7 @@ export default function About() {
             "url(https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
         }}
       ></div>
-      <div className="py-20 px-4 max-w-6xl mx-auto w-full relative">
+      <div className="py-20 px-4 max-w-6xl mx-auto w-full relative slide-in-left">
         <h1 className="text-3xl font-bold mb-4 text-slate-800 relative z-10">
           About Dream Estate
         </h1>
