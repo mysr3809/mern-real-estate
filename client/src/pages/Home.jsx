@@ -44,6 +44,8 @@ export default function Home() {
     };
     fetchOfferListings();
   }, []);
+  console.log(offerListings);
+
   return (
     <div>
       {/* top */}
@@ -76,7 +78,7 @@ export default function Home() {
               <div
                 style={{
                   background: `url(${listing.imageUrls[0]}) center no-repeat`,
-                  backgroundSize: "cover",
+                  backgroundSize: "contain",
                 }}
                 className="h-[500px]"
                 key={listing._id}

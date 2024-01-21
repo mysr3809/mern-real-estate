@@ -246,8 +246,8 @@ export default function Search() {
 
           {!loading &&
             listings &&
-            listings.map((listing) => (
-              <ListingItem key={listing.id} listing={listing} />
+            listings.map((listing, index) => (
+              <ListingItem index={index} key={listing.id} listing={listing} />
             ))}
 
           {showMore && (
