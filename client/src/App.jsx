@@ -11,6 +11,7 @@ import UpdateListing from "./pages/UpdateListing";
 import Listing from "./pages/Listing";
 import Search from "./pages/Search";
 import Footer from "./components/Footer";
+import Map from "./pages/Map";
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/about" element={<About />} />
           <Route path="/search" element={<Search />} />
+          <Route path="/map" element={<Map />} />
           <Route path="/listing/:listingId" element={<Listing />} />
 
           <Route element={<PrivateRoute />}>

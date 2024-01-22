@@ -50,3 +50,13 @@ footer {
     width: 90%;
   }
 }
+
+.leaflet-popup-button {
+  background-color: #f56565; /* red-500 */
+  width: 100%;
+  color: white;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-align: center;
+}

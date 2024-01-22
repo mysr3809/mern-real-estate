@@ -169,12 +169,12 @@ export default function Home() {
         {offerListings && offerListings.length > 0 && (
           <div className="">
             <div className="my-3">
-              <h2 className="text-2xl font-semibold text-slate-600">
-                Recent offers
+              <h2 className="bg-blue-300 text-white text-2xl font-semibold p-3 rounded-md">
+                Recent Offers
               </h2>
               <Link
-                className="text-sm text-blue-800 hover:underline"
                 to={"/search?offer=true"}
+                className="text-blue-500 font-bold hover:text-blue-600 transition duration-300"
               >
                 Show more offers
               </Link>
@@ -189,11 +189,11 @@ export default function Home() {
         {rentListings && rentListings.length > 0 && (
           <div className="justify-between">
             <div className="my-3">
-              <h2 className="text-2xl font-semibold text-slate-600">
+              <h2 className="bg-green-300 text-white text-2xl font-semibold p-3 rounded-md">
                 Recent places for rent
               </h2>
               <Link
-                className="text-sm text-blue-800 hover:underline"
+                className="text-green-500 font-bold hover:text-green-600 transition duration-300"
                 to={"/search?type=rent"}
               >
                 Show more places for rent
@@ -209,12 +209,12 @@ export default function Home() {
         {saleListings && saleListings.length > 0 && (
           <div className="justify-between">
             <div className="my-3">
-              <h2 className="text-2xl font-semibold text-slate-600">
-                Recent places for sale
+              <h2 className="bg-red-300 text-white text-2xl font-semibold p-3 rounded-md">
+                Recent Places for Sale
               </h2>
               <Link
-                className="text-sm text-blue-800 hover:underline"
                 to={"/search?type=sale"}
+                className="text-red-500 font-bold hover:text-red-600 transition duration-300"
               >
                 Show more places for sale
               </Link>

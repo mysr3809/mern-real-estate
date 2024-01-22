@@ -18,6 +18,7 @@ export default function Search() {
   const [loading, setLoading] = useState(false);
   const [listings, setListings] = useState([]);
   const [showMore, setShowMore] = useState(false);
+  const [mapData, setMapData] = useState([]);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
@@ -66,6 +67,10 @@ export default function Search() {
 
     fetchListings();
   }, [location.search]);
+
+  useEffect(() => {
+    setMapData(listings);
+  }, [listings]);
 
   const handleChange = (e) => {
     if (
@@ -128,6 +133,11 @@ export default function Search() {
     }
     setListings([...listings, ...data]);
   };
+
+  const navigateToMapPage = () => {
+    navigate("/map", { state: { mapData } });
+  };
+
   return (
     <div className="flex justify-between flex-col md:flex-row">
       <div className="p-7  border-b-2 md:border-r-2 md:min-h-screen">
@@ -228,6 +238,15 @@ export default function Search() {
           <button className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95">
             Search
           </button>
+          {mapData.length > 0 && (
+            <button
+              type="button"
+              onClick={() => navigateToMapPage()}
+              className="bg-red-700 w-full text-white p-3 rounded-lg uppercase hover:opacity-95"
+            >
+              See List on The Map
+            </button>
+          )}
         </form>
       </div>
       <div className="flex-1">
