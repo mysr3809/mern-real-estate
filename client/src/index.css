@@ -14,7 +14,39 @@ body {
     transform: translateX(0);
   }
 }
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 
 .slide-in-left {
   animation: 0.5s ease-out 0s 1 slideInFromLeft;
+}
+.slide-in-right {
+  animation: 0.5s ease-out 0s 1 slideInFromRight;
+}
+
+.content-wrapper {
+  min-height: 100vh; /* Full height of the viewport */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+footer {
+  margin-top: auto; /* Pushes the footer to the bottom */
+}
+
+.auth-form {
+  width: 50%;
+}
+
+@media (max-width: 768px) {
+  .auth-form {
+    width: 90%;
+  }
 }
