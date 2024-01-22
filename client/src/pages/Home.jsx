@@ -5,6 +5,7 @@ import { Navigation } from "swiper/modules";
 import SwiperCore from "swiper";
 import "swiper/css/bundle";
 import ListingItem from "../components/ListingItem";
+import CountUp from "react-countup";
 
 export default function Home() {
   const [offerListings, setOfferListings] = useState([]);
@@ -67,6 +68,74 @@ export default function Home() {
         >
           Let&apos;s get started...
         </Link>
+        <div className="flex flex-row gap-5">
+          <div className="flex flex-row" style={{ fontSize: "1rem" }}>
+            <div
+              className="flex flex-col justify-center items-center"
+              style={{
+                backgroundColor: "#F4F4F4",
+                padding: "10px",
+                borderRadius: "8px",
+              }}
+            >
+              <span className="font-bold flex items-center">
+                <CountUp
+                  className="text-blue-600"
+                  style={{ fontSize: "2rem" }}
+                  start={0}
+                  end={987}
+                  duration={5}
+                />{" "}
+                <span className="text-orange-700">+</span>
+              </span>
+              <span className="text-gray-700">Saled Estate</span>
+            </div>
+          </div>
+          <div className="flex flex-row" style={{ fontSize: "1rem" }}>
+            <div
+              className="flex flex-col justify-center items-center"
+              style={{
+                backgroundColor: "#F4F4F4",
+                padding: "10px",
+                borderRadius: "8px",
+              }}
+            >
+              <span className="font-bold flex items-center">
+                <CountUp
+                  className="text-green-500"
+                  style={{ fontSize: "2rem" }}
+                  start={0}
+                  end={1538}
+                  duration={3}
+                />{" "}
+                <span className="text-orange-700">+</span>
+              </span>
+              <span className="text-gray-700">Rented Estate</span>
+            </div>
+          </div>
+          <div className="flex flex-row" style={{ fontSize: "1rem" }}>
+            <div
+              className="flex flex-col justify-center items-center"
+              style={{
+                backgroundColor: "#F4F4F4",
+                padding: "10px",
+                borderRadius: "8px",
+              }}
+            >
+              <span className="font-bold flex items-center">
+                <CountUp
+                  className="text-purple-600"
+                  style={{ fontSize: "2rem" }}
+                  start={0}
+                  end={27}
+                  duration={3}
+                />{" "}
+                <span className="text-orange-700">+</span>
+              </span>
+              <span className="text-gray-700">Winning Award</span>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* swiper */}
