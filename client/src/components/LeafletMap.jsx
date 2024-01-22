@@ -8,7 +8,7 @@ import "leaflet/dist/leaflet.js";
 
 const LeafletMap = () => {
   const location = useLocation();
-  const mapData = location.state?.mapData;
+  const mapData = location.state?.mapData || [];
   console.log(mapData);
 
   useEffect(() => {
