@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
 import { Navigation } from "swiper/modules";
@@ -22,6 +22,7 @@ export default function Listing() {
   const [copied, setCopied] = useState(false);
   const [contact, setContact] = useState(false);
   const params = useParams();
+  const navigate = useNavigate();
   SwiperCore.use([Navigation]);
   const { currentUser } = useSelector((state) => state.user);
   useEffect(() => {
@@ -47,6 +48,12 @@ export default function Listing() {
     };
     fetchListing();
   }, [params.id]);
+
+  const handleMapClick = () => {
+    // Assuming the route to your map component is '/map'
+    // You might need to modify this based on your actual route and requirements
+    navigate("/map", { state: { mapData: [listing] } });
+  };
   return (
     <main>
       {loading && <p className="text-center my-7 text-2xl">Loading...</p>}
@@ -93,8 +100,14 @@ export default function Listing() {
                 : listing.regularPrice.toLocaleString("en-US")}
               {listing.type === "rent" && " / month"}
             </p>
-            <p className="flex items-center mt-6 gap-2 text-slate-600  text-sm">
-              <FaMapMarkerAlt className="text-green-700" />
+            <p
+              onClick={handleMapClick}
+              className="flex items-center mt-6 gap-2 text-slate-600  text-sm hover:cursor-pointer"
+            >
+              <FaMapMarkerAlt
+                className="text-green-700 cursor-pointer ml-2"
+                title="View on map"
+              />
               {listing.address}
             </p>
             <div className="flex gap-4">

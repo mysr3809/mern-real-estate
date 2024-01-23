@@ -21,9 +21,10 @@ const LeafletMap = () => {
     }).addTo(map);
 
     mapData.forEach((listing) => {
+      if (!listing.location) return;
       const marker = L.marker([
-        listing.location.latitude,
-        listing.location.longitude,
+        listing?.location?.latitude,
+        listing?.location?.longitude,
       ])
         .addTo(map)
         .bindPopup(
