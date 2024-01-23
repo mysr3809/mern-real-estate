@@ -20,12 +20,19 @@ const LeafletMap = () => {
       attribution: "© OpenStreetMap contributors",
     }).addTo(map);
 
+    const customIcon = L.icon({
+      iconUrl: "https://www.svgrepo.com/show/127575/location-sign.svg", // Replace with the path to your image
+      iconSize: [38, 38], // Size of the icon
+      iconAnchor: [22, 38], // Point of the icon which will correspond to marker's location
+      popupAnchor: [-3, -76], // Point from which the popup should open relative to the iconAnchor
+    });
+
     mapData.forEach((listing) => {
       if (!listing.location) return;
-      const marker = L.marker([
-        listing?.location?.latitude,
-        listing?.location?.longitude,
-      ])
+      const marker = L.marker(
+        [listing?.location?.latitude, listing?.location?.longitude],
+        { icon: customIcon }
+      )
         .addTo(map)
         .bindPopup(
           `<div>
@@ -50,7 +57,7 @@ const LeafletMap = () => {
     }
   }, [mapData]);
 
-  return <div id="leafletMap" style={{ height: "500px" }} />;
+  return <div id="leafletMap" style={{ height: "700px" }} />;
 };
 
 export default LeafletMap;
