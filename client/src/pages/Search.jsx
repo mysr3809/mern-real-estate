@@ -20,6 +20,7 @@ export default function Search() {
   const [showMore, setShowMore] = useState(false);
   const [mapData, setMapData] = useState([]);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
@@ -87,6 +88,17 @@ export default function Search() {
 
     // Remove event listener on cleanup
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Clean up the event listener when the component unmounts
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const handleChange = (e) => {
@@ -279,17 +291,28 @@ export default function Search() {
               Loading...
             </p>
           )}
-          {mapData.length > 0 && (
-            <button
-              onClick={navigateToMapPage}
-              type="button"
-              className={`fixed text-2xl ${
-                isScrolled ? "top-0" : "top-[25%]"
-              } right-0 p-3 z-50 text-red-800 transition-all duration-300`}
-            >
-              <FaMapMarkedAlt />
-            </button>
-          )}
+          {mapData.length > 0 &&
+            (windowWidth > 767 ? (
+              // Button for large devices
+              <button
+                onClick={navigateToMapPage}
+                type="button"
+                className={`border-2 bg-white rounded-lg w-50 h-50 color-red-700 fixed text-2xl ${
+                  isScrolled ? "top-10" : "top-[25%]"
+                } right-0 p-3 z-50 text-red-800 transition-all duration-300`}
+              >
+                <FaMapMarkedAlt />
+              </button>
+            ) : (
+              // Button for mobile devices
+              <button
+                onClick={navigateToMapPage}
+                type="button"
+                className="fixed bottom-0 right-0 bg-white border-2 rounded-lg w-50 h-50 text-2xl p-3 z-50 text-red-800"
+              >
+                <FaMapMarkedAlt />
+              </button>
+            ))}
 
           {!loading &&
             listings &&

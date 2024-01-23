@@ -136,9 +136,9 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="w-1/2 flex justify-center items-center slide-in-right">
+        <div className="hidden md:flex w-1/2 justify-center items-center slide-in-right">
           <img
-            className="w-2/3 rounded-lg  slide-in-right"
+            className="w-2/3 rounded-lg slide-in-right"
             src="https://plus.unsplash.com/premium_photo-1663089688180-444ff0066e5d?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt=""
           />
