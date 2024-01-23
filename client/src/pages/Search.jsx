@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ListingItem from "../components/ListingItem";
-// import ListingItem from "../components/ListingItem";
+import { FaMapMarkedAlt } from "react-icons/fa";
 
 export default function Search() {
   const navigate = useNavigate();
@@ -19,6 +19,7 @@ export default function Search() {
   const [listings, setListings] = useState([]);
   const [showMore, setShowMore] = useState(false);
   const [mapData, setMapData] = useState([]);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
@@ -71,6 +72,22 @@ export default function Search() {
   useEffect(() => {
     setMapData(listings);
   }, [listings]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 200) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    // Add event listener
+    window.addEventListener("scroll", handleScroll);
+
+    // Remove event listener on cleanup
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleChange = (e) => {
     if (
@@ -253,7 +270,7 @@ export default function Search() {
         <h1 className="text-3xl font-semibold border-b p-3 text-slate-700 mt-5">
           Listing results:
         </h1>
-        <div className="p-7 flex flex-wrap gap-4">
+        <div className="p-7 relative flex flex-wrap gap-4">
           {!loading && listings.length === 0 && (
             <p className="text-xl text-slate-700">No listing found!</p>
           )}
@@ -261,6 +278,17 @@ export default function Search() {
             <p className="text-xl text-slate-700 text-center w-full">
               Loading...
             </p>
+          )}
+          {mapData.length > 0 && (
+            <button
+              onClick={navigateToMapPage}
+              type="button"
+              className={`fixed text-2xl ${
+                isScrolled ? "top-0" : "top-[25%]"
+              } right-0 p-3 z-50 text-red-800 transition-all duration-300`}
+            >
+              <FaMapMarkedAlt />
+            </button>
           )}
 
           {!loading &&
