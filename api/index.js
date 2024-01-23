@@ -6,6 +6,14 @@ import authRoute from "./routes/auth.route.js";
 import listingRoute from "./routes/listing.route.js";
 import cookieParser from "cookie-parser";
 dotenv.config();
+import path from "path";
+
+mongoose
+  .connect(process.env.MONGO)
+  .then(() => console.log("Connected to MongoDB"))
+  .catch((err) => console.log(err));
+
+const __dirname = path.resolve();
 
 const app = express();
 app.listen(3000, () => console.log("Listening on port 3000"));
@@ -14,6 +22,12 @@ app.use(cookieParser());
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRoute);
 app.use("/api/listing", listingRoute);
+
+app.use(express.static(path.join(__dirname, "./client/dist")));
+
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+});
 
 app.use((err, req, res, next) => {
   const statusCode = err.status || 500;
@@ -24,8 +38,3 @@ app.use((err, req, res, next) => {
     message,
   });
 });
-
-mongoose
-  .connect(process.env.MONGO)
-  .then(() => console.log("Connected to MongoDB"))
-  .catch((err) => console.log(err));
