@@ -23,7 +23,7 @@ const LeafletMap = () => {
     const customIcon = L.icon({
       iconUrl: "https://www.svgrepo.com/show/127575/location-sign.svg", // Replace with the path to your image
       iconSize: [38, 38], // Size of the icon
-      iconAnchor: [22], // Point of the icon which will correspond to marker's location
+      iconAnchor: [22, 38], // Point of the icon which will correspond to marker's location
       popupAnchor: [-3, -76], // Point from which the popup should open relative to the iconAnchor
     });
 
